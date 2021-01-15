@@ -31,6 +31,10 @@ namespace MvcEntityFramework
         {
             String cadena = 
                 Configuration.GetConnectionString("casasqlhospital");
+            services.AddTransient<RepositoryEmpleados>();
+            services.AddDbContext<EmpleadosContext>(options =>
+            options.UseSqlServer(cadena));
+
             services.AddTransient<RepositoryEnfermos>();
             services.AddDbContext<EnfermosContext>(options =>
             options.UseSqlServer(cadena));
