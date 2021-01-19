@@ -34,6 +34,26 @@ using System.Threading.Tasks;
 //as
 //	select distinct especialidad from doctor
 //go
+//create procedure procempleadoshospital
+//(@hospitalcod int, @suma int out
+//, @media int out)
+//as
+//    select* from empleadoshospital
+//    where hospital_cod = @hospitalcod
+//            select @suma = sum(salario), @media = avg(salario)
+//    from empleadoshospital
+//    where hospital_cod = @hospitalcod
+//go
+//create view empleadoshospital
+//as
+//	select isnull(empleado_no, 0) as IdEmpleado
+//	, apellido, funcion, salario, hospital_cod
+//    from plantilla
+//	union
+//	select doctor_no, apellido, especialidad, salario
+//    , hospital_cod
+//	from doctor
+//go
 #endregion
 
 namespace MvcEntityFramework.Data
@@ -50,6 +70,8 @@ namespace MvcEntityFramework.Data
         public DbSet<Hospital> Hospitales { get; set; }
 
         public DbSet<Doctor> Doctores { get; set; }
+
+        public DbSet<EmpleadoHospital> EmpleadosHospital { get; set; }
 
         //CREAMOS EL PRIMER PROCEDIMIENTO DE ACCION
         public void ModificarEspecialidad(int iddoctor, String espe)

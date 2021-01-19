@@ -1,0 +1,29 @@
+﻿@model List<EmpleadoHospital>
+
+<h1>Vistas EF</h1>
+<a asp-action="ProcedimientoEmpleadosHospital"
+   asp-controller="EmpleadosHospital">
+    Procedimiento Out
+</a>
+
+<table class="table table-bordered table-dark">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Funcion</th>
+            <th>Salario</th>
+            <th>Hospital</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (EmpleadoHospital emp in Model)
+        {
+            <tr>
+                <td>@emp.Apellido</td>
+                <td>@emp.Funcion</td>
+                <td>@emp.Salario</td>
+                <td>@emp.Hospital</td>
+            </tr>
+        }
+    </tbody>
+</table>
